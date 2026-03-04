@@ -23,11 +23,11 @@ app.use("/api/notes", notesRoutes);
 
 if(process.env.NODE_ENV ==="production"){
     // Serve frontend static files
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 // Catch-all SPA fallback
 app.use((req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+  res.sendFile(path.resolve(__dirname, "../../frontend/dist/index.html"));
 });
 }
 
