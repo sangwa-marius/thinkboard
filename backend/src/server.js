@@ -18,20 +18,20 @@ app.use(express.json());
 app.use(rateLimiter);
 app.use(morgan("dev"));
 
-// API routes
+
 app.use("/api/notes", notesRoutes);
 
 if(process.env.NODE_ENV ==="production"){
-    // Serve frontend static files
+    
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
-// Catch-all SPA fallback
+
 app.use((req, res) => {
   res.sendFile(path.resolve(__dirname, "../../frontend/dist/index.html"));
 });
 }
 
-// Connect DB and start server
+
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log("Server running on port:", PORT);
